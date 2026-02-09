@@ -1,0 +1,2198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory &amp; Supply Chain Analytics System - Project Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+        }
+
+        h1 {
+            font-size: 24pt;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1a365d;
+        }
+
+        h2 {
+            font-size: 16pt;
+            color: #1a365d;
+            border-bottom: 2px solid #1a365d;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 14pt;
+            color: #2c5282;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            font-size: 12pt;
+            color: #2d3748;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 12px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 11pt;
+        }
+
+        th, td {
+            border: 1px solid #4a5568;
+            padding: 8px 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1a365d;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        tr:hover {
+            background-color: #edf2f7;
+        }
+
+        .cover-page {
+            text-align: center;
+            page-break-after: always;
+            min-height: 250mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cover-page h1 {
+            font-size: 28pt;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .cover-page .subtitle {
+            font-size: 18pt;
+            color: #2c5282;
+            margin-bottom: 40px;
+        }
+
+        .cover-page .course-info {
+            font-size: 14pt;
+            margin-bottom: 30px;
+        }
+
+        .cover-page .university {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: #1a365d;
+        }
+
+        .team-table {
+            width: 60%;
+            margin: 20px auto;
+        }
+
+        .cover-page .submission-info {
+            margin-top: 40px;
+            font-size: 12pt;
+        }
+
+        .toc {
+            page-break-after: always;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            border-bottom: 1px dotted #cbd5e0;
+            padding-bottom: 5px;
+        }
+
+        .toc a {
+            color: #1a365d;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .toc .toc-h2 {
+            font-weight: bold;
+        }
+
+        .toc .toc-h3 {
+            margin-left: 20px;
+        }
+
+        .architecture-diagram {
+            font-family: 'Courier New', monospace;
+            font-size: 10pt;
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            margin: 15px 0;
+            white-space: pre;
+            overflow-x: auto;
+            line-height: 1.4;
+        }
+
+        .erd-diagram {
+            font-family: 'Courier New', monospace;
+            font-size: 9pt;
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            margin: 15px 0;
+            white-space: pre;
+            overflow-x: auto;
+            line-height: 1.3;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            font-size: 10pt;
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .keyword {
+            color: #63b3ed;
+        }
+
+        .function {
+            color: #f6ad55;
+        }
+
+        .highlight-box {
+            background-color: #ebf8ff;
+            border-left: 4px solid #1a365d;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .table-small {
+            font-size: 10pt;
+        }
+
+        .table-small th, .table-small td {
+            padding: 5px 8px;
+        }
+
+        .section {
+            page-break-inside: avoid;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 11pt;
+                max-width: 100%;
+                background: white;
+            }
+
+            @page {
+                size: A4;
+                margin: 20mm 15mm;
+            }
+
+            @page :first {
+                margin-top: 0;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                padding: 30mm 0;
+                display: block;
+                text-align: center;
+                page-break-after: always;
+            }
+
+            .cover-page .university {
+                margin-top: 50mm;
+            }
+
+            .toc {
+                page-break-after: always;
+            }
+
+            .toc a {
+                color: #1a365d !important;
+            }
+
+            .toc a::after {
+                content: none;
+            }
+
+            h1, h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            h2, h3, h4 {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+
+            table {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tr {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            th {
+                background-color: #1a365d !important;
+                color: #ffffff !important;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f0f0f0 !important;
+            }
+
+            .architecture-diagram,
+            .erd-diagram {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                background-color: #f5f5f5 !important;
+                border: 1px solid #999 !important;
+                font-size: 9pt;
+            }
+
+            .code-block {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                background-color: #1a1a1a !important;
+                color: #e0e0e0 !important;
+                border: 1px solid #333;
+                font-size: 9pt;
+            }
+
+            .code-block .keyword {
+                color: #6fa8dc !important;
+            }
+
+            .code-block .function {
+                color: #e69138 !important;
+            }
+
+            .page-break {
+                page-break-before: always;
+                break-before: always;
+            }
+
+            section {
+                page-break-inside: avoid;
+                break-inside: auto;
+            }
+
+            section h3,
+            section h4 {
+                page-break-after: avoid;
+            }
+
+            a {
+                color: inherit !important;
+                text-decoration: none !important;
+            }
+
+            .team-table {
+                margin: 30px auto !important;
+            }
+
+            .team-table th,
+            .team-table td {
+                padding: 12px 20px !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            footer {
+                page-break-inside: avoid;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <div class="cover-page">
+        <div class="university">Mirpur University of Science and Technology</div>
+        <div class="course-info">
+            Department of Software Engineering<br>
+            Database Systems Laboratory
+        </div>
+        
+        <h1>Inventory &amp; Supply Chain Analytics System</h1>
+        <div class="subtitle">Semester Project Proposal</div>
+
+        <table class="team-table">
+            <tr>
+                <th>Team Members</th>
+                <th>Roll Number</th>
+            </tr>
+            <tr>
+                <td>Muhammad Farhan Ali</td>
+                <td>FA24-BSE-043</td>
+            </tr>
+            <tr>
+                <td>Siraj Shabbir</td>
+                <td>FA24-BSE-009</td>
+            </tr>
+        </table>
+
+        <div class="submission-info">
+            <strong>Supervised By:</strong> Sehrish Manzoor<br><br>
+            <strong>Session:</strong> 2024-2028<br><br>
+            <strong>Submission Date:</strong> 9th February, 2026
+        </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li class="toc-h2"><a href="#executive-summary">1. Executive Summary</a></li>
+            <li class="toc-h2"><a href="#introduction">2. Introduction</a></li>
+            <li class="toc-h3"><a href="#background">2.1 Background and Motivation</a></li>
+            <li class="toc-h3"><a href="#objectives">2.2 Objectives</a></li>
+            <li class="toc-h3"><a href="#scope">2.3 Scope and Limitations</a></li>
+            <li class="toc-h2"><a href="#architecture">3. System Architecture</a></li>
+            <li class="toc-h3"><a href="#tech-stack">3.1 Technology Stack</a></li>
+            <li class="toc-h3"><a href="#three-tier">3.2 Three-Tier Architecture</a></li>
+            <li class="toc-h2"><a href="#database-design">4. Database Design</a></li>
+            <li class="toc-h3"><a href="#erd">4.1 Entity-Relationship Diagram</a></li>
+            <li class="toc-h3"><a href="#table-definitions">4.2 Table Definitions</a></li>
+            <li class="toc-h3"><a href="#views">4.3 Database Views</a></li>
+            <li class="toc-h3"><a href="#stored-procedures">4.4 Stored Procedures</a></li>
+            <li class="toc-h3"><a href="#triggers">4.5 Triggers</a></li>
+            <li class="toc-h2"><a href="#features">5. Feature Specifications</a></li>
+            <li class="toc-h3"><a href="#modules">5.1 Core Modules</a></li>
+            <li class="toc-h3"><a href="#sql-demos">5.2 Key SQL Demonstrations</a></li>
+            <li class="toc-h2"><a href="#ui-design">6. User Interface Design</a></li>
+            <li class="toc-h2"><a href="#implementation">7. Implementation Plan</a></li>
+            <li class="toc-h2"><a href="#conclusion">8. Conclusion</a></li>
+            <li class="toc-h2"><a href="#references">9. References</a></li>
+        </ul>
+    </div>
+
+    <!-- Executive Summary -->
+    <section id="executive-summary">
+        <h2>1. Executive Summary</h2>
+        
+        <p>
+            This proposal presents the design and implementation plan for an <strong>Inventory and Supply Chain Analytics System</strong>, 
+            a comprehensive database-driven application that manages products, suppliers, warehouses, purchase orders, sales orders, 
+            and shipments with real-time inventory tracking and analytics capabilities.
+        </p>
+
+        <h3>Problem Statement</h3>
+        <p>
+            Modern businesses struggle with inventory management challenges including stockouts, overstock situations, 
+            inefficient supplier management, and lack of real-time visibility into supply chain operations. 
+            Manual tracking methods are error-prone and fail to provide actionable insights for decision-making.
+        </p>
+
+        <h3>Proposed Solution</h3>
+        <p>
+            We propose developing a full-stack inventory management system with a Microsoft SQL Server backend 
+            that leverages advanced database features including stored procedures, triggers, views, and complex analytical queries. 
+            The system will feature a modern web-based frontend providing dashboards, CRUD operations, and comprehensive reporting capabilities.
+            The primary focus is on demonstrating proficiency in SQL and database design while delivering a functional, real-world application.
+        </p>
+    </section>
+
+    <!-- Introduction -->
+    <section id="introduction">
+        <h2>2. Introduction</h2>
+
+        <h3 id="background">2.1 Background and Motivation</h3>
+        <p>
+            Effective inventory management is critical for business operations across industries. Organizations need systems that can 
+            track stock levels across multiple locations, manage supplier relationships, process orders efficiently, and provide 
+            analytical insights for strategic planning. This project aims to create such a system while demonstrating comprehensive 
+            understanding of database concepts learned throughout the Database Systems course.
+        </p>
+        <p>
+            The motivation behind choosing this domain includes:
+        </p>
+        <ul>
+            <li>Rich data relationships suitable for demonstrating relational database design</li>
+            <li>Natural use cases for stored procedures, triggers, and transactions</li>
+            <li>Opportunities for complex analytical queries using window functions and CTEs</li>
+            <li>Real-world applicability and professional relevance</li>
+        </ul>
+
+        <h3 id="objectives">2.2 Objectives</h3>
+        <p>The primary objectives of this project are:</p>
+        <ol>
+            <li>Design a normalized relational database schema for inventory and supply chain management</li>
+            <li>Implement stored procedures for encapsulating business logic within the database</li>
+            <li>Create triggers for automated inventory updates and audit trails</li>
+            <li>Develop views for simplified data access and reporting</li>
+            <li>Demonstrate advanced SQL techniques including window functions, CTEs, and complex joins</li>
+            <li>Build a user-friendly web interface for system interaction</li>
+            <li>Implement proper transaction handling for data integrity</li>
+        </ol>
+
+        <h3 id="scope">2.3 Scope and Limitations</h3>
+        
+        <h4>In Scope</h4>
+        <ul>
+            <li>Product and category management</li>
+            <li>Supplier management with performance tracking</li>
+            <li>Multi-warehouse inventory tracking</li>
+            <li>Purchase order creation and receiving</li>
+            <li>Sales order processing and shipment tracking</li>
+            <li>Stock movement audit trail</li>
+            <li>Analytics dashboard and reports</li>
+            <li>User authentication and role-based access</li>
+        </ul>
+
+        <h4>Limitations</h4>
+        <ul>
+            <li>No integration with external ERP or accounting systems</li>
+            <li>No barcode/RFID scanning functionality</li>
+            <li>Single-currency support only</li>
+            <li>No mobile application (web-based only)</li>
+        </ul>
+    </section>
+
+    <!-- System Architecture -->
+    <section id="architecture" class="page-break">
+        <h2>3. System Architecture</h2>
+
+        <h3 id="tech-stack">3.1 Technology Stack</h3>
+        
+        <table>
+            <tr>
+                <th>Layer</th>
+                <th>Technology</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Database</td>
+                <td>Microsoft SQL Server 2022</td>
+                <td>Data storage, stored procedures, triggers, views</td>
+            </tr>
+            <tr>
+                <td>Backend</td>
+                <td>Node.js with mssql package</td>
+                <td>API endpoints, database connectivity (raw SQL, no ORM)</td>
+            </tr>
+            <tr>
+                <td>Frontend</td>
+                <td>Next.js + TypeScript</td>
+                <td>User interface, client-side rendering</td>
+            </tr>
+            <tr>
+                <td>UI Components</td>
+                <td>Tailwind CSS + shadcn/ui</td>
+                <td>Styling and reusable components</td>
+            </tr>
+            <tr>
+                <td>Charts</td>
+                <td>Recharts</td>
+                <td>Data visualization on dashboard</td>
+            </tr>
+            <tr>
+                <td>Development</td>
+                <td>Docker + Azure Data Studio</td>
+                <td>SQL Server containerization and management</td>
+            </tr>
+        </table>
+
+        <h3 id="three-tier">3.2 Three-Tier Architecture</h3>
+
+        <div class="architecture-diagram">
++------------------------------------------------------------------+
+|                      PRESENTATION TIER                            |
+|                                                                   |
+|    +----------------------------------------------------------+  |
+|    |                  Next.js Frontend                         |  |
+|    |  +----------+  +----------+  +----------+  +----------+  |  |
+|    |  |Dashboard |  |Products  |  |Orders    |  |Reports   |  |  |
+|    |  +----------+  +----------+  +----------+  +----------+  |  |
+|    +----------------------------------------------------------+  |
++------------------------------------------------------------------+
+                              |
+                              | HTTP/REST API
+                              v
++------------------------------------------------------------------+
+|                      APPLICATION TIER                             |
+|                                                                   |
+|    +----------------------------------------------------------+  |
+|    |              Next.js API Routes / Express.js              |  |
+|    |                                                           |  |
+|    |  - Request validation                                     |  |
+|    |  - Authentication middleware                              |  |
+|    |  - Raw SQL query execution (mssql package)                |  |
+|    |  - Response formatting                                    |  |
+|    +----------------------------------------------------------+  |
++------------------------------------------------------------------+
+                              |
+                              | TDS Protocol
+                              v
++------------------------------------------------------------------+
+|                        DATA TIER                                  |
+|                                                                   |
+|    +----------------------------------------------------------+  |
+|    |              Microsoft SQL Server                         |  |
+|    |                                                           |  |
+|    |  +----------------+  +------------------+                 |  |
+|    |  | Tables (13)    |  | Views (6)        |                 |  |
+|    |  +----------------+  +------------------+                 |  |
+|    |  +----------------+  +------------------+                 |  |
+|    |  | Stored         |  | Triggers (5)     |                 |  |
+|    |  | Procedures (10)|  +------------------+                 |  |
+|    |  +----------------+                                       |  |
+|    +----------------------------------------------------------+  |
++------------------------------------------------------------------+
+        </div>
+
+        <p>
+            The architecture follows the three-tier model separating concerns between presentation, application logic, 
+            and data management. Notably, significant business logic resides in the database tier through stored procedures 
+            and triggers, demonstrating database-centric application design as emphasized in database systems coursework.
+        </p>
+    </section>
+
+    <!-- Database Design -->
+    <section id="database-design" class="page-break">
+        <h2>4. Database Design</h2>
+
+        <h3 id="erd">4.1 Entity-Relationship Diagram</h3>
+
+        <div class="erd-diagram">
+                                    +-------------+
+                                    | Categories  |
+                                    +------+------+
+                                           |
+                                           | 1:N
+                                           v
++-------------+       1:N        +-------------+
+| Suppliers   |----------------->| Products    |
++------+------+                  +------+------+
+       |                                |
+       |                                |
+       | 1:N                            | 1:N
+       v                                v
++---------------+               +-------------+       N:1      +-------------+
+| Purchase      |               | Inventory   |<-------------->| Warehouses  |
+| Orders        |               +------+------+                +-------------+
++------+--------+                      |                              ^
+       |                               |                              |
+       | 1:N                           | 1:N                          |
+       v                               v                              |
++---------------+               +---------------+                     |
+| PO_Items      |               | Stock         |                     |
++---------------+               | Movements     |                     |
+                                +---------------+                     |
+                                                                      |
++-------------+       1:N        +-------------+       N:1            |
+| Customers   |----------------->| Sales       |----------------------+
++-------------+                  | Orders      |
+                                 +------+------+
+                                        |
+                                        | 1:N
+                          +-------------+-------------+
+                          |                           |
+                          v                           v
+                   +-------------+            +-------------+
+                   | SO_Items    |            | Shipments   |
+                   +-------------+            +-------------+
+
+
++-------------+
+| Users       |  (Application Users - separate from business entities)
++-------------+
+
+RELATIONSHIPS:
+- Suppliers supply multiple Products (1:N)
+- Categories contain multiple Products (1:N)
+- Products are stored in multiple Warehouses via Inventory (M:N)
+- Suppliers receive multiple PurchaseOrders (1:N)
+- PurchaseOrders contain multiple PO_Items (1:N)
+- Customers place multiple SalesOrders (1:N)
+- SalesOrders contain multiple SO_Items (1:N)
+- SalesOrders have one or more Shipments (1:N)
+- StockMovements track all Inventory changes (audit trail)
+        </div>
+
+        <h3 id="table-definitions">4.2 Table Definitions</h3>
+
+        <h4>4.2.1 Categories</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>CategoryID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>CategoryName</td>
+                <td>NVARCHAR(100)</td>
+                <td>NOT NULL, UNIQUE</td>
+                <td>Category name</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>NVARCHAR(500)</td>
+                <td>NULL</td>
+                <td>Category description</td>
+            </tr>
+            <tr>
+                <td>CreatedAt</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Record creation timestamp</td>
+            </tr>
+        </table>
+
+        <h4>4.2.2 Suppliers</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>SupplierID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>SupplierName</td>
+                <td>NVARCHAR(200)</td>
+                <td>NOT NULL</td>
+                <td>Company name</td>
+            </tr>
+            <tr>
+                <td>ContactPerson</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>Primary contact name</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>Contact email</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>NVARCHAR(20)</td>
+                <td>NULL</td>
+                <td>Contact phone</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>NVARCHAR(500)</td>
+                <td>NULL</td>
+                <td>Street address</td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>City</td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>Country</td>
+            </tr>
+            <tr>
+                <td>Rating</td>
+                <td>DECIMAL(2,1)</td>
+                <td>CHECK (Rating BETWEEN 1 AND 5)</td>
+                <td>Performance rating (1-5)</td>
+            </tr>
+            <tr>
+                <td>IsActive</td>
+                <td>BIT</td>
+                <td>DEFAULT 1</td>
+                <td>Active status flag</td>
+            </tr>
+            <tr>
+                <td>CreatedAt</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Record creation timestamp</td>
+            </tr>
+        </table>
+
+        <h4>4.2.3 Products</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>ProductID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>SKU</td>
+                <td>NVARCHAR(50)</td>
+                <td>NOT NULL, UNIQUE</td>
+                <td>Stock keeping unit code</td>
+            </tr>
+            <tr>
+                <td>ProductName</td>
+                <td>NVARCHAR(200)</td>
+                <td>NOT NULL</td>
+                <td>Product name</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>NVARCHAR(1000)</td>
+                <td>NULL</td>
+                <td>Product description</td>
+            </tr>
+            <tr>
+                <td>CategoryID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Categories</td>
+                <td>Category reference</td>
+            </tr>
+            <tr>
+                <td>SupplierID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Suppliers</td>
+                <td>Primary supplier reference</td>
+            </tr>
+            <tr>
+                <td>UnitPrice</td>
+                <td>DECIMAL(10,2)</td>
+                <td>NOT NULL</td>
+                <td>Selling price per unit</td>
+            </tr>
+            <tr>
+                <td>CostPrice</td>
+                <td>DECIMAL(10,2)</td>
+                <td>NOT NULL</td>
+                <td>Purchase cost per unit</td>
+            </tr>
+            <tr>
+                <td>ReorderLevel</td>
+                <td>INT</td>
+                <td>DEFAULT 10</td>
+                <td>Minimum stock threshold</td>
+            </tr>
+            <tr>
+                <td>ReorderQuantity</td>
+                <td>INT</td>
+                <td>DEFAULT 50</td>
+                <td>Standard reorder quantity</td>
+            </tr>
+            <tr>
+                <td>LeadTimeDays</td>
+                <td>INT</td>
+                <td>DEFAULT 7</td>
+                <td>Supplier lead time in days</td>
+            </tr>
+            <tr>
+                <td>IsActive</td>
+                <td>BIT</td>
+                <td>DEFAULT 1</td>
+                <td>Active status flag</td>
+            </tr>
+            <tr>
+                <td>CreatedAt</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Record creation timestamp</td>
+            </tr>
+        </table>
+
+        <h4>4.2.4 Warehouses</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>WarehouseID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>WarehouseName</td>
+                <td>NVARCHAR(100)</td>
+                <td>NOT NULL</td>
+                <td>Warehouse name</td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>NVARCHAR(200)</td>
+                <td>NULL</td>
+                <td>Address/location</td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>City</td>
+            </tr>
+            <tr>
+                <td>Capacity</td>
+                <td>INT</td>
+                <td>NULL</td>
+                <td>Maximum storage capacity</td>
+            </tr>
+            <tr>
+                <td>ManagerName</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>Warehouse manager</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>NVARCHAR(20)</td>
+                <td>NULL</td>
+                <td>Contact phone</td>
+            </tr>
+            <tr>
+                <td>IsActive</td>
+                <td>BIT</td>
+                <td>DEFAULT 1</td>
+                <td>Active status flag</td>
+            </tr>
+            <tr>
+                <td>CreatedAt</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Record creation timestamp</td>
+            </tr>
+        </table>
+
+        <h4>4.2.5 Inventory</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>InventoryID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>ProductID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Products</td>
+                <td>Product reference</td>
+            </tr>
+            <tr>
+                <td>WarehouseID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Warehouses</td>
+                <td>Warehouse reference</td>
+            </tr>
+            <tr>
+                <td>QuantityOnHand</td>
+                <td>INT</td>
+                <td>DEFAULT 0</td>
+                <td>Current stock quantity</td>
+            </tr>
+            <tr>
+                <td>QuantityReserved</td>
+                <td>INT</td>
+                <td>DEFAULT 0</td>
+                <td>Reserved for pending orders</td>
+            </tr>
+            <tr>
+                <td>LastRestockDate</td>
+                <td>DATETIME</td>
+                <td>NULL</td>
+                <td>Last restock timestamp</td>
+            </tr>
+            <tr>
+                <td>UpdatedAt</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Last update timestamp</td>
+            </tr>
+            <tr>
+                <td colspan="4"><em>UNIQUE CONSTRAINT on (ProductID, WarehouseID)</em></td>
+            </tr>
+        </table>
+
+        <h4>4.2.6 Customers</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>CustomerID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>CustomerName</td>
+                <td>NVARCHAR(200)</td>
+                <td>NOT NULL</td>
+                <td>Customer/company name</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>Contact email</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>NVARCHAR(20)</td>
+                <td>NULL</td>
+                <td>Contact phone</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>NVARCHAR(500)</td>
+                <td>NULL</td>
+                <td>Shipping address</td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>City</td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>Country</td>
+            </tr>
+            <tr>
+                <td>CustomerType</td>
+                <td>NVARCHAR(20)</td>
+                <td>CHECK (IN 'Retail','Wholesale')</td>
+                <td>Customer classification</td>
+            </tr>
+            <tr>
+                <td>CreditLimit</td>
+                <td>DECIMAL(12,2)</td>
+                <td>DEFAULT 0</td>
+                <td>Credit limit amount</td>
+            </tr>
+            <tr>
+                <td>IsActive</td>
+                <td>BIT</td>
+                <td>DEFAULT 1</td>
+                <td>Active status flag</td>
+            </tr>
+            <tr>
+                <td>CreatedAt</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Record creation timestamp</td>
+            </tr>
+        </table>
+
+        <h4>4.2.7 PurchaseOrders</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>PurchaseOrderID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>PONumber</td>
+                <td>NVARCHAR(50)</td>
+                <td>NOT NULL, UNIQUE</td>
+                <td>PO reference number</td>
+            </tr>
+            <tr>
+                <td>SupplierID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Suppliers</td>
+                <td>Supplier reference</td>
+            </tr>
+            <tr>
+                <td>WarehouseID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Warehouses</td>
+                <td>Receiving warehouse</td>
+            </tr>
+            <tr>
+                <td>OrderDate</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Order placement date</td>
+            </tr>
+            <tr>
+                <td>ExpectedDate</td>
+                <td>DATETIME</td>
+                <td>NULL</td>
+                <td>Expected delivery date</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>NVARCHAR(20)</td>
+                <td>DEFAULT 'Pending'</td>
+                <td>Pending/Approved/Received/Cancelled</td>
+            </tr>
+            <tr>
+                <td>TotalAmount</td>
+                <td>DECIMAL(12,2)</td>
+                <td>NULL</td>
+                <td>Total order value</td>
+            </tr>
+            <tr>
+                <td>Notes</td>
+                <td>NVARCHAR(1000)</td>
+                <td>NULL</td>
+                <td>Additional notes</td>
+            </tr>
+            <tr>
+                <td>CreatedBy</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>User who created the PO</td>
+            </tr>
+            <tr>
+                <td>CreatedAt</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Record creation timestamp</td>
+            </tr>
+        </table>
+
+        <h4>4.2.8 PurchaseOrderItems</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>POItemID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>PurchaseOrderID</td>
+                <td>INT</td>
+                <td>FK REFERENCES PurchaseOrders</td>
+                <td>Parent PO reference</td>
+            </tr>
+            <tr>
+                <td>ProductID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Products</td>
+                <td>Product reference</td>
+            </tr>
+            <tr>
+                <td>Quantity</td>
+                <td>INT</td>
+                <td>NOT NULL</td>
+                <td>Ordered quantity</td>
+            </tr>
+            <tr>
+                <td>UnitCost</td>
+                <td>DECIMAL(10,2)</td>
+                <td>NOT NULL</td>
+                <td>Cost per unit</td>
+            </tr>
+            <tr>
+                <td>ReceivedQuantity</td>
+                <td>INT</td>
+                <td>DEFAULT 0</td>
+                <td>Quantity received so far</td>
+            </tr>
+        </table>
+
+        <h4>4.2.9 SalesOrders</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>SalesOrderID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>SONumber</td>
+                <td>NVARCHAR(50)</td>
+                <td>NOT NULL, UNIQUE</td>
+                <td>SO reference number</td>
+            </tr>
+            <tr>
+                <td>CustomerID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Customers</td>
+                <td>Customer reference</td>
+            </tr>
+            <tr>
+                <td>WarehouseID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Warehouses</td>
+                <td>Fulfilling warehouse</td>
+            </tr>
+            <tr>
+                <td>OrderDate</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Order placement date</td>
+            </tr>
+            <tr>
+                <td>RequiredDate</td>
+                <td>DATETIME</td>
+                <td>NULL</td>
+                <td>Customer required date</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>NVARCHAR(20)</td>
+                <td>DEFAULT 'Pending'</td>
+                <td>Pending/Processing/Shipped/Delivered/Cancelled</td>
+            </tr>
+            <tr>
+                <td>TotalAmount</td>
+                <td>DECIMAL(12,2)</td>
+                <td>NULL</td>
+                <td>Total order value</td>
+            </tr>
+            <tr>
+                <td>ShippingAddress</td>
+                <td>NVARCHAR(500)</td>
+                <td>NULL</td>
+                <td>Delivery address</td>
+            </tr>
+            <tr>
+                <td>Notes</td>
+                <td>NVARCHAR(1000)</td>
+                <td>NULL</td>
+                <td>Additional notes</td>
+            </tr>
+            <tr>
+                <td>CreatedAt</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Record creation timestamp</td>
+            </tr>
+        </table>
+
+        <h4>4.2.10 SalesOrderItems</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>SOItemID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>SalesOrderID</td>
+                <td>INT</td>
+                <td>FK REFERENCES SalesOrders</td>
+                <td>Parent SO reference</td>
+            </tr>
+            <tr>
+                <td>ProductID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Products</td>
+                <td>Product reference</td>
+            </tr>
+            <tr>
+                <td>Quantity</td>
+                <td>INT</td>
+                <td>NOT NULL</td>
+                <td>Ordered quantity</td>
+            </tr>
+            <tr>
+                <td>UnitPrice</td>
+                <td>DECIMAL(10,2)</td>
+                <td>NOT NULL</td>
+                <td>Selling price per unit</td>
+            </tr>
+            <tr>
+                <td>Discount</td>
+                <td>DECIMAL(5,2)</td>
+                <td>DEFAULT 0</td>
+                <td>Discount percentage</td>
+            </tr>
+        </table>
+
+        <h4>4.2.11 Shipments</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>ShipmentID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>SalesOrderID</td>
+                <td>INT</td>
+                <td>FK REFERENCES SalesOrders</td>
+                <td>Related sales order</td>
+            </tr>
+            <tr>
+                <td>ShipmentDate</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Date shipped</td>
+            </tr>
+            <tr>
+                <td>Carrier</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>Shipping carrier name</td>
+            </tr>
+            <tr>
+                <td>TrackingNumber</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>Carrier tracking number</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>NVARCHAR(20)</td>
+                <td>DEFAULT 'Preparing'</td>
+                <td>Preparing/Shipped/InTransit/Delivered</td>
+            </tr>
+            <tr>
+                <td>DeliveryDate</td>
+                <td>DATETIME</td>
+                <td>NULL</td>
+                <td>Actual delivery date</td>
+            </tr>
+            <tr>
+                <td>Notes</td>
+                <td>NVARCHAR(500)</td>
+                <td>NULL</td>
+                <td>Shipping notes</td>
+            </tr>
+        </table>
+
+        <h4>4.2.12 StockMovements (Audit Trail)</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>MovementID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>ProductID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Products</td>
+                <td>Product reference</td>
+            </tr>
+            <tr>
+                <td>WarehouseID</td>
+                <td>INT</td>
+                <td>FK REFERENCES Warehouses</td>
+                <td>Warehouse reference</td>
+            </tr>
+            <tr>
+                <td>MovementType</td>
+                <td>NVARCHAR(20)</td>
+                <td>NOT NULL</td>
+                <td>IN/OUT/TRANSFER/ADJUSTMENT</td>
+            </tr>
+            <tr>
+                <td>Quantity</td>
+                <td>INT</td>
+                <td>NOT NULL</td>
+                <td>Movement quantity</td>
+            </tr>
+            <tr>
+                <td>ReferenceType</td>
+                <td>NVARCHAR(20)</td>
+                <td>NULL</td>
+                <td>PO/SO/MANUAL</td>
+            </tr>
+            <tr>
+                <td>ReferenceID</td>
+                <td>INT</td>
+                <td>NULL</td>
+                <td>Related order ID</td>
+            </tr>
+            <tr>
+                <td>Notes</td>
+                <td>NVARCHAR(500)</td>
+                <td>NULL</td>
+                <td>Movement notes</td>
+            </tr>
+            <tr>
+                <td>CreatedBy</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>User who recorded movement</td>
+            </tr>
+            <tr>
+                <td>CreatedAt</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Movement timestamp</td>
+            </tr>
+        </table>
+
+        <h4>4.2.13 Users</h4>
+        <table class="table-small">
+            <tr>
+                <th>Column</th>
+                <th>Data Type</th>
+                <th>Constraints</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>UserID</td>
+                <td>INT</td>
+                <td>PK, IDENTITY(1,1)</td>
+                <td>Unique identifier</td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td>NVARCHAR(50)</td>
+                <td>NOT NULL, UNIQUE</td>
+                <td>Login username</td>
+            </tr>
+            <tr>
+                <td>PasswordHash</td>
+                <td>NVARCHAR(256)</td>
+                <td>NOT NULL</td>
+                <td>Hashed password</td>
+            </tr>
+            <tr>
+                <td>FullName</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>User's full name</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>NVARCHAR(100)</td>
+                <td>NULL</td>
+                <td>User email</td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td>NVARCHAR(20)</td>
+                <td>DEFAULT 'Staff'</td>
+                <td>Admin/Manager/Staff</td>
+            </tr>
+            <tr>
+                <td>IsActive</td>
+                <td>BIT</td>
+                <td>DEFAULT 1</td>
+                <td>Active status flag</td>
+            </tr>
+            <tr>
+                <td>CreatedAt</td>
+                <td>DATETIME</td>
+                <td>DEFAULT GETDATE()</td>
+                <td>Record creation timestamp</td>
+            </tr>
+        </table>
+
+        <!-- Views Section -->
+        <h3 id="views" class="page-break">4.3 Database Views</h3>
+
+        <table>
+            <tr>
+                <th>View Name</th>
+                <th>Purpose</th>
+                <th>Key Columns</th>
+            </tr>
+            <tr>
+                <td>vw_InventorySummary</td>
+                <td>Consolidated view of inventory across all warehouses with calculated available quantity and stock value</td>
+                <td>ProductName, WarehouseName, OnHand, Reserved, Available, StockValue, ReorderNeeded</td>
+            </tr>
+            <tr>
+                <td>vw_PendingOrders</td>
+                <td>Lists all pending purchase and sales orders with aging information</td>
+                <td>OrderType, OrderNumber, Date, Status, DaysOld, TotalAmount</td>
+            </tr>
+            <tr>
+                <td>vw_LowStockProducts</td>
+                <td>Products below reorder level with suggested order quantities based on lead time</td>
+                <td>ProductName, CurrentStock, ReorderLevel, Deficit, SuggestedOrderQty</td>
+            </tr>
+            <tr>
+                <td>vw_SalesByProduct</td>
+                <td>Aggregated sales metrics per product including revenue, quantity sold, and profit margin</td>
+                <td>ProductName, TotalQuantity, Revenue, Cost, Profit, MarginPercent</td>
+            </tr>
+            <tr>
+                <td>vw_SupplierPerformance</td>
+                <td>Supplier metrics including order count, on-time delivery rate, and average lead time</td>
+                <td>SupplierName, TotalOrders, OnTimePercent, AvgLeadTime, TotalValue</td>
+            </tr>
+            <tr>
+                <td>vw_CustomerOrderHistory</td>
+                <td>Customer purchase patterns with total orders, lifetime value, and last order date</td>
+                <td>CustomerName, OrderCount, LifetimeValue, AvgOrderValue, LastOrderDate</td>
+            </tr>
+        </table>
+
+        <!-- Stored Procedures Section -->
+        <h3 id="stored-procedures">4.4 Stored Procedures</h3>
+
+        <table>
+            <tr>
+                <th>Procedure Name</th>
+                <th>Purpose</th>
+                <th>Key Parameters</th>
+            </tr>
+            <tr>
+                <td>sp_CreatePurchaseOrder</td>
+                <td>Creates a new purchase order with line items, auto-generates PO number, calculates totals</td>
+                <td>@SupplierID, @WarehouseID, @Items (JSON), @CreatedBy</td>
+            </tr>
+            <tr>
+                <td>sp_ReceivePurchaseOrder</td>
+                <td>Processes goods receipt, updates inventory, logs stock movements, handles partial receipts</td>
+                <td>@PurchaseOrderID, @ReceivedItems (JSON), @ReceivedBy</td>
+            </tr>
+            <tr>
+                <td>sp_CreateSalesOrder</td>
+                <td>Creates sales order, validates inventory availability, reserves stock, calculates totals with discounts</td>
+                <td>@CustomerID, @WarehouseID, @Items (JSON), @ShippingAddress</td>
+            </tr>
+            <tr>
+                <td>sp_ProcessSalesOrder</td>
+                <td>Fulfills order by deducting inventory, releasing reservations, creating shipment record</td>
+                <td>@SalesOrderID, @Carrier, @TrackingNumber</td>
+            </tr>
+            <tr>
+                <td>sp_GetInventoryStatus</td>
+                <td>Returns current inventory levels with reorder alerts, available vs reserved quantities</td>
+                <td>@WarehouseID (optional), @CategoryID (optional)</td>
+            </tr>
+            <tr>
+                <td>sp_TransferStock</td>
+                <td>Moves inventory between warehouses with validation and complete audit trail</td>
+                <td>@ProductID, @FromWarehouse, @ToWarehouse, @Quantity, @TransferredBy</td>
+            </tr>
+            <tr>
+                <td>sp_CalculateReorderNeeds</td>
+                <td>Analyzes stock levels vs reorder points, suggests PO quantities considering lead times</td>
+                <td>@WarehouseID (optional)</td>
+            </tr>
+            <tr>
+                <td>sp_GetSalesAnalytics</td>
+                <td>Returns sales data with flexible grouping options and date range filtering</td>
+                <td>@StartDate, @EndDate, @GroupBy ('Daily'/'Weekly'/'Monthly')</td>
+            </tr>
+            <tr>
+                <td>sp_GetSupplierPerformance</td>
+                <td>Calculates supplier metrics: on-time rate, average lead time, order accuracy</td>
+                <td>@SupplierID (optional), @StartDate, @EndDate</td>
+            </tr>
+            <tr>
+                <td>sp_AdjustInventory</td>
+                <td>Manual stock adjustment with reason codes and full audit trail logging</td>
+                <td>@ProductID, @WarehouseID, @AdjustmentQty, @Reason, @AdjustedBy</td>
+            </tr>
+        </table>
+
+        <!-- Triggers Section -->
+        <h3 id="triggers">4.5 Triggers</h3>
+
+        <table>
+            <tr>
+                <th>Trigger Name</th>
+                <th>Table</th>
+                <th>Event</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>trg_UpdateInventoryOnPOReceive</td>
+                <td>PurchaseOrderItems</td>
+                <td>AFTER UPDATE</td>
+                <td>When ReceivedQuantity changes, automatically updates Inventory.QuantityOnHand and inserts StockMovement record</td>
+            </tr>
+            <tr>
+                <td>trg_ReserveStockOnSOCreate</td>
+                <td>SalesOrderItems</td>
+                <td>AFTER INSERT</td>
+                <td>Increases Inventory.QuantityReserved for the ordered products to prevent overselling</td>
+            </tr>
+            <tr>
+                <td>trg_DeductStockOnShipment</td>
+                <td>Shipments</td>
+                <td>AFTER INSERT</td>
+                <td>Deducts QuantityOnHand, releases QuantityReserved, and logs StockMovement for audit</td>
+            </tr>
+            <tr>
+                <td>trg_LowStockAlert</td>
+                <td>Inventory</td>
+                <td>AFTER UPDATE</td>
+                <td>When QuantityOnHand falls below product's ReorderLevel, inserts alert record for notification</td>
+            </tr>
+            <tr>
+                <td>trg_AuditPriceChanges</td>
+                <td>Products</td>
+                <td>AFTER UPDATE</td>
+                <td>Logs price changes to PriceHistory table when UnitPrice or CostPrice is modified</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Feature Specifications -->
+    <section id="features" class="page-break">
+        <h2>5. Feature Specifications</h2>
+
+        <h3 id="modules">5.1 Core Modules</h3>
+
+        <table>
+            <tr>
+                <th>Module</th>
+                <th>Features</th>
+            </tr>
+            <tr>
+                <td><strong>Dashboard</strong></td>
+                <td>
+                    <ul>
+                        <li>KPI cards: Total inventory value, pending orders count, low stock alerts, monthly revenue</li>
+                        <li>Charts: Sales trend (line), top products (bar), inventory by category (pie), warehouse utilization (gauge)</li>
+                        <li>Recent activity feed: Latest orders and stock movements</li>
+                        <li>Quick action buttons for common tasks</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Product Management</strong></td>
+                <td>
+                    <ul>
+                        <li>CRUD operations with search and filter capabilities</li>
+                        <li>Category assignment and supplier linking</li>
+                        <li>Price history tracking</li>
+                        <li>Reorder level configuration</li>
+                        <li>Bulk import via CSV</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Inventory Management</strong></td>
+                <td>
+                    <ul>
+                        <li>Real-time stock levels by warehouse</li>
+                        <li>Stock transfer between warehouses</li>
+                        <li>Manual adjustment with reason codes</li>
+                        <li>Movement history and audit trail</li>
+                        <li>Low stock alerts and reorder suggestions</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Purchase Orders</strong></td>
+                <td>
+                    <ul>
+                        <li>Create PO with multiple line items</li>
+                        <li>Supplier and warehouse selection</li>
+                        <li>Goods receipt processing (full/partial)</li>
+                        <li>PO status tracking and history</li>
+                        <li>Auto-suggested reorders</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Sales Orders</strong></td>
+                <td>
+                    <ul>
+                        <li>Create SO with inventory validation</li>
+                        <li>Customer selection with credit check</li>
+                        <li>Discount application</li>
+                        <li>Order processing and fulfillment</li>
+                        <li>Shipment creation and tracking</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Suppliers</strong></td>
+                <td>
+                    <ul>
+                        <li>Supplier directory with contact information</li>
+                        <li>Performance metrics dashboard</li>
+                        <li>Order history per supplier</li>
+                        <li>Rating and status management</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Customers</strong></td>
+                <td>
+                    <ul>
+                        <li>Customer directory with classification</li>
+                        <li>Order history and lifetime value</li>
+                        <li>Credit limit management</li>
+                        <li>Contact information management</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Warehouses</strong></td>
+                <td>
+                    <ul>
+                        <li>Warehouse directory and details</li>
+                        <li>Capacity utilization monitoring</li>
+                        <li>Inventory by warehouse view</li>
+                        <li>Manager assignment</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Reports</strong></td>
+                <td>
+                    <ul>
+                        <li>Sales reports (by period, product, customer)</li>
+                        <li>Inventory valuation report</li>
+                        <li>Stock movement report</li>
+                        <li>Supplier performance report</li>
+                        <li>Export to CSV/PDF</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h3 id="sql-demos">5.2 Key SQL Demonstrations</h3>
+
+        <p>The following advanced SQL techniques will be demonstrated in this project:</p>
+
+        <h4>5.2.1 Window Functions - Sales Trend Analysis</h4>
+        <div class="code-block"><span class="keyword">SELECT</span> 
+    ProductID,
+    <span class="function">FORMAT</span>(OrderDate, 'yyyy-MM') <span class="keyword">AS</span> MonthYear,
+    <span class="function">SUM</span>(Quantity * UnitPrice) <span class="keyword">AS</span> MonthlySales,
+    <span class="function">LAG</span>(<span class="function">SUM</span>(Quantity * UnitPrice)) <span class="keyword">OVER</span> (
+        <span class="keyword">PARTITION BY</span> ProductID 
+        <span class="keyword">ORDER BY</span> <span class="function">FORMAT</span>(OrderDate, 'yyyy-MM')
+    ) <span class="keyword">AS</span> PreviousMonth,
+    <span class="function">SUM</span>(<span class="function">SUM</span>(Quantity * UnitPrice)) <span class="keyword">OVER</span> (
+        <span class="keyword">PARTITION BY</span> ProductID 
+        <span class="keyword">ORDER BY</span> <span class="function">FORMAT</span>(OrderDate, 'yyyy-MM')
+    ) <span class="keyword">AS</span> RunningTotal,
+    <span class="function">RANK</span>() <span class="keyword">OVER</span> (
+        <span class="keyword">PARTITION BY</span> <span class="function">FORMAT</span>(OrderDate, 'yyyy-MM') 
+        <span class="keyword">ORDER BY</span> <span class="function">SUM</span>(Quantity * UnitPrice) <span class="keyword">DESC</span>
+    ) <span class="keyword">AS</span> SalesRank
+<span class="keyword">FROM</span> SalesOrders so
+<span class="keyword">JOIN</span> SalesOrderItems soi <span class="keyword">ON</span> so.SalesOrderID = soi.SalesOrderID
+<span class="keyword">GROUP BY</span> ProductID, <span class="function">FORMAT</span>(OrderDate, 'yyyy-MM')</div>
+
+        <h4>5.2.2 Common Table Expressions (CTE) - Inventory Valuation</h4>
+        <div class="code-block"><span class="keyword">WITH</span> InventoryValue <span class="keyword">AS</span> (
+    <span class="keyword">SELECT</span> 
+        w.WarehouseID,
+        w.WarehouseName,
+        c.CategoryID,
+        c.CategoryName,
+        <span class="function">SUM</span>(i.QuantityOnHand * p.CostPrice) <span class="keyword">AS</span> TotalValue
+    <span class="keyword">FROM</span> Inventory i
+    <span class="keyword">JOIN</span> Products p <span class="keyword">ON</span> i.ProductID = p.ProductID
+    <span class="keyword">JOIN</span> Categories c <span class="keyword">ON</span> p.CategoryID = c.CategoryID
+    <span class="keyword">JOIN</span> Warehouses w <span class="keyword">ON</span> i.WarehouseID = w.WarehouseID
+    <span class="keyword">GROUP BY</span> w.WarehouseID, w.WarehouseName, c.CategoryID, c.CategoryName
+)
+<span class="keyword">SELECT</span> 
+    WarehouseName,
+    CategoryName,
+    TotalValue,
+    <span class="function">SUM</span>(TotalValue) <span class="keyword">OVER</span> (<span class="keyword">PARTITION BY</span> WarehouseID) <span class="keyword">AS</span> WarehouseTotal
+<span class="keyword">FROM</span> InventoryValue
+<span class="keyword">ORDER BY</span> WarehouseName, TotalValue <span class="keyword">DESC</span></div>
+
+        <h4>5.2.3 Transaction Handling - Order Processing</h4>
+        <div class="code-block"><span class="keyword">BEGIN TRANSACTION</span>
+<span class="keyword">BEGIN TRY</span>
+    <span class="keyword">UPDATE</span> Inventory 
+    <span class="keyword">SET</span> QuantityOnHand = QuantityOnHand - @OrderQty,
+        QuantityReserved = QuantityReserved - @OrderQty
+    <span class="keyword">WHERE</span> ProductID = @ProductID <span class="keyword">AND</span> WarehouseID = @WarehouseID;
+
+    <span class="keyword">INSERT INTO</span> StockMovements (ProductID, WarehouseID, MovementType, Quantity, ReferenceType, ReferenceID)
+    <span class="keyword">VALUES</span> (@ProductID, @WarehouseID, 'OUT', @OrderQty, 'SO', @SalesOrderID);
+
+    <span class="keyword">UPDATE</span> SalesOrders <span class="keyword">SET</span> Status = 'Shipped' <span class="keyword">WHERE</span> SalesOrderID = @SalesOrderID;
+
+    <span class="keyword">COMMIT TRANSACTION</span>
+<span class="keyword">END TRY</span>
+<span class="keyword">BEGIN CATCH</span>
+    <span class="keyword">ROLLBACK TRANSACTION</span>
+    <span class="keyword">THROW</span>;
+<span class="keyword">END CATCH</span></div>
+
+        <h4>5.2.4 ABC Analysis (Pareto Principle)</h4>
+        <div class="code-block"><span class="keyword">WITH</span> ProductRevenue <span class="keyword">AS</span> (
+    <span class="keyword">SELECT</span> 
+        p.ProductID,
+        p.ProductName,
+        <span class="function">SUM</span>(soi.Quantity * soi.UnitPrice) <span class="keyword">AS</span> Revenue
+    <span class="keyword">FROM</span> Products p
+    <span class="keyword">JOIN</span> SalesOrderItems soi <span class="keyword">ON</span> p.ProductID = soi.ProductID
+    <span class="keyword">GROUP BY</span> p.ProductID, p.ProductName
+),
+RankedProducts <span class="keyword">AS</span> (
+    <span class="keyword">SELECT</span> *,
+        <span class="function">SUM</span>(Revenue) <span class="keyword">OVER</span> (<span class="keyword">ORDER BY</span> Revenue <span class="keyword">DESC</span>) <span class="keyword">AS</span> CumulativeRevenue,
+        <span class="function">SUM</span>(Revenue) <span class="keyword">OVER</span> () <span class="keyword">AS</span> TotalRevenue
+    <span class="keyword">FROM</span> ProductRevenue
+)
+<span class="keyword">SELECT</span> *,
+    <span class="keyword">CASE</span> 
+        <span class="keyword">WHEN</span> CumulativeRevenue / TotalRevenue &lt;= 0.80 <span class="keyword">THEN</span> 'A'
+        <span class="keyword">WHEN</span> CumulativeRevenue / TotalRevenue &lt;= 0.95 <span class="keyword">THEN</span> 'B'
+        <span class="keyword">ELSE</span> 'C'
+    <span class="keyword">END AS</span> ABCCategory
+<span class="keyword">FROM</span> RankedProducts</div>
+    </section>
+
+    <!-- User Interface Design -->
+    <section id="ui-design" class="page-break">
+        <h2>6. User Interface Design</h2>
+
+        <p>The application will feature a modern, responsive web interface built with Next.js and Tailwind CSS. The design follows a dashboard-centric approach with intuitive navigation.</p>
+
+        <h3>6.1 Layout Structure</h3>
+        <div class="architecture-diagram">
++------------------------------------------------------------------+
+|  HEADER                                                [User Menu] |
++----------+-------------------------------------------------------+
+|          |                                                        |
+|  SIDEBAR |              MAIN CONTENT AREA                         |
+|          |                                                        |
+| Dashboard|  +--------------------------------------------------+  |
+| Products |  |  Breadcrumb / Page Title                         |  |
+| Inventory|  +--------------------------------------------------+  |
+| Purchase |  |                                                  |  |
+| Orders   |  |  Content varies by module:                       |  |
+| Sales    |  |  - Data tables with search/filter                |  |
+| Orders   |  |  - Forms for create/edit                         |  |
+| Suppliers|  |  - Charts and KPI cards                          |  |
+| Customers|  |  - Detail views                                  |  |
+| Warehouse|  |                                                  |  |
+| Reports  |  |                                                  |  |
+| Settings |  +--------------------------------------------------+  |
+|          |                                                        |
++----------+-------------------------------------------------------+
+        </div>
+
+        <h3>6.2 Dashboard Layout</h3>
+        <div class="architecture-diagram">
++------------------------------------------------------------------+
+|                         DASHBOARD                                  |
++------------------------------------------------------------------+
+|  +------------+  +------------+  +------------+  +------------+   |
+|  | Total      |  | Pending    |  | Low Stock  |  | Monthly    |   |
+|  | Inventory  |  | Orders     |  | Alerts     |  | Revenue    |   |
+|  | $XXX,XXX   |  | XX         |  | XX         |  | $XX,XXX    |   |
+|  +------------+  +------------+  +------------+  +------------+   |
+|                                                                    |
+|  +--------------------------------+  +---------------------------+ |
+|  |                                |  |                           | |
+|  |   Sales Trend (Line Chart)    |  |  Top 10 Products (Bar)    | |
+|  |   Last 12 months              |  |  By Revenue               | |
+|  |                                |  |                           | |
+|  +--------------------------------+  +---------------------------+ |
+|                                                                    |
+|  +--------------------------------+  +---------------------------+ |
+|  |                                |  |                           | |
+|  |  Inventory by Category (Pie)  |  |  Low Stock Alerts (Table) | |
+|  |                                |  |  Product | Stock | Action | |
+|  |                                |  |                           | |
+|  +--------------------------------+  +---------------------------+ |
+|                                                                    |
+|  +---------------------------------------------------------------+ |
+|  |  Recent Activity                                               | |
+|  |  - PO #1234 received at Warehouse A                           | |
+|  |  - SO #5678 shipped to Customer XYZ                           | |
+|  |  - Low stock alert: Product ABC                               | |
+|  +---------------------------------------------------------------+ |
++------------------------------------------------------------------+
+        </div>
+
+        <h3>6.3 Design Principles</h3>
+        <ul>
+            <li><strong>Consistency:</strong> Uniform styling across all modules using shadcn/ui components</li>
+            <li><strong>Responsiveness:</strong> Adaptive layout for desktop and tablet screens</li>
+            <li><strong>Accessibility:</strong> Proper contrast ratios, keyboard navigation support</li>
+            <li><strong>Feedback:</strong> Loading states, success/error notifications, confirmation dialogs</li>
+            <li><strong>Efficiency:</strong> Bulk actions, keyboard shortcuts, quick filters</li>
+        </ul>
+    </section>
+
+    <!-- Implementation Plan -->
+    <section id="implementation" class="page-break">
+        <h2>7. Implementation Plan</h2>
+
+        <table>
+            <tr>
+                <th>Phase</th>
+                <th>Tasks</th>
+                <th>Deliverables</th>
+            </tr>
+            <tr>
+                <td><strong>Phase 1</strong><br>Database Foundation</td>
+                <td>
+                    <ul>
+                        <li>Create all 13 tables with constraints</li>
+                        <li>Define foreign key relationships</li>
+                        <li>Create indexes for performance</li>
+                        <li>Develop seed data scripts</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>01_create_tables.sql</li>
+                        <li>05_seed_data.sql</li>
+                        <li>Database diagram</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Phase 2</strong><br>Views &amp; Procedures</td>
+                <td>
+                    <ul>
+                        <li>Implement 6 database views</li>
+                        <li>Develop 10 stored procedures</li>
+                        <li>Implement 5 triggers</li>
+                        <li>Test with sample data</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>02_create_views.sql</li>
+                        <li>03_create_stored_procedures.sql</li>
+                        <li>04_create_triggers.sql</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Phase 3</strong><br>Backend API</td>
+                <td>
+                    <ul>
+                        <li>Set up Next.js project structure</li>
+                        <li>Configure database connection</li>
+                        <li>Build API routes for all entities</li>
+                        <li>Implement authentication</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>API endpoints</li>
+                        <li>Database connection module</li>
+                        <li>Auth middleware</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Phase 4</strong><br>Frontend Core</td>
+                <td>
+                    <ul>
+                        <li>Build dashboard with charts</li>
+                        <li>Implement product management UI</li>
+                        <li>Create inventory management screens</li>
+                        <li>Develop reusable components</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Dashboard page</li>
+                        <li>Products module</li>
+                        <li>Inventory module</li>
+                        <li>Component library</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Phase 5</strong><br>Order Management</td>
+                <td>
+                    <ul>
+                        <li>Purchase order workflow</li>
+                        <li>Sales order workflow</li>
+                        <li>Goods receipt processing</li>
+                        <li>Shipment tracking</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Purchase Orders module</li>
+                        <li>Sales Orders module</li>
+                        <li>Shipments module</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Phase 6</strong><br>Reports &amp; Polish</td>
+                <td>
+                    <ul>
+                        <li>Build report generation</li>
+                        <li>Implement export functionality</li>
+                        <li>UI/UX refinements</li>
+                        <li>Testing and bug fixes</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Reports module</li>
+                        <li>Export features</li>
+                        <li>Final application</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h3>7.1 Project File Structure</h3>
+        <div class="code-block">/inventory-system
+├── /database
+│   ├── 01_create_tables.sql
+│   ├── 02_create_views.sql
+│   ├── 03_create_stored_procedures.sql
+│   ├── 04_create_triggers.sql
+│   ├── 05_seed_data.sql
+│   └── 06_sample_queries.sql
+│
+├── /src
+│   ├── /app
+│   │   ├── /dashboard
+│   │   ├── /products
+│   │   ├── /inventory
+│   │   ├── /purchase-orders
+│   │   ├── /sales-orders
+│   │   ├── /suppliers
+│   │   ├── /customers
+│   │   ├── /warehouses
+│   │   ├── /reports
+│   │   └── /api
+│   │
+│   ├── /components
+│   │   ├── /ui
+│   │   ├── /charts
+│   │   ├── /tables
+│   │   └── /forms
+│   │
+│   └── /lib
+│       ├── db.ts
+│       └── queries.ts
+│
+├── package.json
+├── .env
+└── docker-compose.yml</div>
+    </section>
+
+    <!-- Conclusion -->
+    <section id="conclusion" class="page-break">
+        <h2>8. Conclusion</h2>
+
+        <h3>8.1 Expected Outcomes</h3>
+        <p>Upon successful completion of this project, we will deliver:</p>
+        <ul>
+            <li>A fully functional inventory and supply chain management system</li>
+            <li>A well-designed relational database with proper normalization</li>
+            <li>Comprehensive stored procedures demonstrating database-centric business logic</li>
+            <li>Triggers providing automated data integrity and audit capabilities</li>
+            <li>Views simplifying complex data access patterns</li>
+            <li>A modern web interface for system interaction</li>
+            <li>Documentation of all database objects and their purposes</li>
+        </ul>
+
+        <h3>8.2 Learning Objectives Alignment</h3>
+        <p>This project directly addresses the following database systems learning objectives:</p>
+        
+        <table>
+            <tr>
+                <th>Learning Objective</th>
+                <th>Project Component</th>
+            </tr>
+            <tr>
+                <td>Relational database design and normalization</td>
+                <td>13-table schema design with proper relationships</td>
+            </tr>
+            <tr>
+                <td>SQL query writing (basic to advanced)</td>
+                <td>CRUD operations, complex joins, subqueries</td>
+            </tr>
+            <tr>
+                <td>Stored procedures and functions</td>
+                <td>10 stored procedures encapsulating business logic</td>
+            </tr>
+            <tr>
+                <td>Triggers for automation</td>
+                <td>5 triggers for inventory updates and auditing</td>
+            </tr>
+            <tr>
+                <td>Views for data abstraction</td>
+                <td>6 views for reporting and simplified access</td>
+            </tr>
+            <tr>
+                <td>Transaction management</td>
+                <td>ACID-compliant order processing procedures</td>
+            </tr>
+            <tr>
+                <td>Advanced SQL features</td>
+                <td>Window functions, CTEs, ROLLUP operations</td>
+            </tr>
+            <tr>
+                <td>Database-application integration</td>
+                <td>Raw SQL execution via mssql package (no ORM)</td>
+            </tr>
+        </table>
+
+        <h3>8.3 Distinguishing Features</h3>
+        <p>This project stands out from typical database lab projects through:</p>
+        <ol>
+            <li><strong>Database-First Design:</strong> Business logic resides primarily in stored procedures, not application code</li>
+            <li><strong>Complete Audit Trail:</strong> StockMovements table provides full traceability of all inventory changes</li>
+            <li><strong>Real-World Complexity:</strong> Multi-warehouse inventory with reservations and partial receipts</li>
+            <li><strong>Professional UI:</strong> Modern dashboard with analytics, not just basic forms</li>
+            <li><strong>Advanced SQL Demonstrations:</strong> Window functions, CTEs, and analytical queries</li>
+        </ol>
+    </section>
+
+    <!-- References -->
+    <section id="references">
+        <h2>9. References</h2>
+
+        <ol>
+            <li>Microsoft SQL Server Documentation. Microsoft. https://docs.microsoft.com/en-us/sql/</li>
+            <li>Elmasri, R., &amp; Navathe, S. B. (2015). <em>Fundamentals of Database Systems</em> (7th ed.). Pearson.</li>
+            <li>Silberschatz, A., Korth, H. F., &amp; Sudarshan, S. (2019). <em>Database System Concepts</em> (7th ed.). McGraw-Hill.</li>
+            <li>Next.js Documentation. Vercel. https://nextjs.org/docs</li>
+            <li>shadcn/ui Components. https://ui.shadcn.com/</li>
+            <li>[Additional references to be added as needed]</li>
+        </ol>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #e2e8f0; text-align: center; color: #718096; font-size: 10pt;">
+        <p>Inventory &amp; Supply Chain Analytics System - Project Proposal</p>
+        <p>Prepared for Database Systems Laboratory</p>
+    </footer>
+
+</body>
+</html>
