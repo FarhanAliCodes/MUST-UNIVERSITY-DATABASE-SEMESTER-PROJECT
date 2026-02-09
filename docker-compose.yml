@@ -4,12 +4,13 @@ services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: inventory-db
+    restart: unless-stopped
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=${DB_PASSWORD:-YourStrongPassword123!}
       - MSSQL_PID=Developer
-    ports:
-      - "1433:1433"
+    expose:
+      - "1433"
     volumes:
       - sqlserver_data:/var/opt/mssql
     healthcheck:
@@ -33,7 +34,6 @@ services:
       - DB_NAME=${DB_NAME:-InventoryDB}
     volumes:
       - ./database:/database:ro
-      - ./scripts:/scripts:ro
     entrypoint: /bin/bash
     command: >
       -c "
@@ -63,6 +63,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: inventory-app
+    restart: unless-stopped
     depends_on:
       db-init:
         condition: service_completed_successfully
@@ -75,7 +76,7 @@ services:
       - DB_ENCRYPT=false
       - DB_TRUST_SERVER_CERTIFICATE=true
     ports:
-      - "3000:3000"
+      - "80:3000"
 
 volumes:
   sqlserver_data:
