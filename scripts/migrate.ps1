@@ -1,22 +1,19 @@
 # PowerShell migration script for Windows
+# Usage: .\scripts\migrate.ps1 -Password "YourPassword"
 
 param(
-    [string]$Server = $env:DB_SERVER,
-    [string]$Port = $env:DB_PORT,
-    [string]$User = $env:DB_USER,
-    [string]$Password = $env:DB_PASSWORD,
-    [string]$Database = $env:DB_NAME
+    [string]$Server = "localhost",
+    [string]$Port = "1433",
+    [string]$User = "sa",
+    [Parameter(Mandatory=$true)]
+    [string]$Password,
+    [string]$Database = "InventoryDB"
 )
-
-if (-not $Server) { $Server = "localhost" }
-if (-not $Port) { $Port = "1433" }
-if (-not $User) { $User = "sa" }
-if (-not $Password) { $Password = "YourStrongPassword123!" }
-if (-not $Database) { $Database = "InventoryDB" }
 
 $ConnectionString = "Server=$Server,$Port;User Id=$User;Password=$Password;TrustServerCertificate=True;"
 
 Write-Host "[OK] Starting database initialization..."
+Write-Host "[OK] Server: $Server`:$Port"
 
 function Wait-ForDatabase {
     Write-Host "[OK] Waiting for SQL Server to be ready..."
@@ -106,7 +103,7 @@ function Invoke-Migration {
 }
 
 function Invoke-AllMigrations {
-    $scriptDir = Split-Path -Parent $MyInvocation.PSCommandPath
+    $scriptDir = Split-Path -Parent $PSCommandPath
     $dbDir = Join-Path (Split-Path -Parent $scriptDir) "database"
     
     Write-Host "[OK] Running migrations from: $dbDir"
@@ -123,7 +120,6 @@ function Invoke-AllMigrations {
     return $true
 }
 
-# Main execution
 if (-not (Wait-ForDatabase)) { exit 1 }
 if (-not (New-Database)) { exit 1 }
 if (-not (Invoke-AllMigrations)) { exit 1 }
