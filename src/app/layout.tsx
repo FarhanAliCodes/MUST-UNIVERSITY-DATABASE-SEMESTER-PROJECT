@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${jakarta.variable} font-sans overflow-x-hidden`}>
+    <html lang="en" className="h-full overflow-hidden">
+      <body className={`${jakarta.variable} font-sans h-full overflow-hidden`}>
         <AuthProvider>
           <AppLayout>{children}</AppLayout>
         </AuthProvider>

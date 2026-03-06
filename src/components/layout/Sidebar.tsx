@@ -49,7 +49,7 @@ export default function Sidebar() {
   );
 
   return (
-    <aside className="hidden lg:flex w-64 bg-gradient-to-b from-slate-900 to-slate-800 h-screen flex-col shadow-xl sticky top-0">
+    <aside className="hidden lg:flex w-64 bg-gradient-to-b from-slate-900 to-slate-800 flex-col shadow-xl" style={{ flexShrink: 0, height: "100vh" }}>
       <div className="flex-shrink-0 p-5 border-b border-slate-700/50">
         <div className="flex items-center gap-3">
           <div className="w-11 h-11 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/25">
